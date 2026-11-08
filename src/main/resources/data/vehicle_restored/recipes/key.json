@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "WII"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:black_wool"
+    },
+    "I": {
+      "tag": "forge:ingots/gold"
+    }
+  },
+  "result": {
+    "item": "vehicle_restored:key"
+  }
+}

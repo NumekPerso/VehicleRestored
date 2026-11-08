@@ -1,0 +1,14 @@
+{
+  "type": "vehicle_restored:workstation",
+  "vehicle": "vehicle_restored:fluid_trailer",
+  "materials": [
+    {
+      "tag": "forge:ingots/iron",
+      "count": 48
+    },
+    {
+      "item": "vehicle_restored:panel",
+      "count": 8
+    }
+  ]
+}

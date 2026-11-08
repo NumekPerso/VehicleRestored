@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vehicle_restored:panel"
+    ]
+  },
+  "criteria": {
+    "has_iron_nugget": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:nuggets/iron"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vehicle_restored:panel"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_iron_nugget",
+      "has_the_recipe"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

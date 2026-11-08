@@ -1,0 +1,6 @@
+{
+	"parent": "vehicle_restored:block/fluid_pipe",
+	"textures": {
+		"fluid_pipe": "vehicle_restored:model/disabled_fluid_pipe"
+	}
+}

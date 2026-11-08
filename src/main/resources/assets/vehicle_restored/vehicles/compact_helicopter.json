@@ -1,0 +1,32 @@
+{
+    "general": {
+        "engineType": "vehicle_restored:large_motor",
+        "canBeColored": true
+    },
+    "display": {
+        "gui": {
+            "scale": 0.5
+        }
+    },
+    "position": {
+        "fuelPort": {
+            "translate": [ -11.7, 11.0, -10.0 ],
+            "rotation": [ 0.0, -90.0, 0.0 ],
+            "scale": 0.25
+        },
+        "keyPort": {
+            "translate": [ -4.0, 12.0, 16.45 ],
+            "rotation": [ -90.0, 0.0, 0.0 ],
+            "scale": 0.5
+        }
+    },
+    "seats": [
+        {
+            "position": [ 7.5, 10.0, 3.0 ],
+            "driver": true
+        },
+        {
+            "position": [ -7.5, 10.0, 3.0 ]
+        }
+    ]
+}

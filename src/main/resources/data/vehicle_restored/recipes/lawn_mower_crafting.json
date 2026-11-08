@@ -1,0 +1,18 @@
+{
+  "type": "vehicle_restored:workstation",
+  "vehicle": "vehicle_restored:lawn_mower",
+  "materials": [
+    {
+      "tag": "forge:ingots/iron",
+      "count": 48
+    },
+    {
+      "item": "minecraft:black_wool",
+      "count": 4
+    },
+    {
+      "item": "vehicle_restored:panel",
+      "count": 8
+    }
+  ]
+}

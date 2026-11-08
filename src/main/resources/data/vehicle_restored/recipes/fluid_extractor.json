@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "III",
+    "GPR",
+    "IEI"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    },
+    "E": {
+      "item": "vehicle_restored:iron_electric_engine"
+    }
+  },
+  "result": {
+    "item": "vehicle_restored:fluid_extractor"
+  }
+}

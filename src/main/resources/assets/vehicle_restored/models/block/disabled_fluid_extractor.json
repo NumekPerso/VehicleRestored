@@ -1,0 +1,6 @@
+{
+	"parent": "vehicle_restored:block/fluid_extractor",
+	"textures": {
+		"fluid_extractor": "vehicle_restored:model/disabled_fluid_extractor"
+	}
+}

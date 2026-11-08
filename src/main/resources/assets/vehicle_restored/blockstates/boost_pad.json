@@ -1,0 +1,195 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "facing": "north"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "north",
+        "left": "true"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_left",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "north",
+        "left": "false"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_trim_left",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "north",
+        "right": "true"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_right",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "north",
+        "right": "false"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_trim_right",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "east"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "left": "true"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_left",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "left": "false"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_trim_left",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "right": "true"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_right",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "facing": "east",
+        "right": "false"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_trim_right",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "facing": "south"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad"
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "left": "true"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_left"
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "left": "false"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_trim_left"
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "right": "true"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_right"
+      }
+    },
+    {
+      "when": {
+        "facing": "south",
+        "right": "false"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_trim_right"
+      }
+    },
+    {
+      "when": {
+        "facing": "west"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "left": "true"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_left",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "left": "false"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_trim_left",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "right": "true"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_right",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "west",
+        "right": "false"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/boost_pad_trim_right",
+        "y": 90
+      }
+    }
+  ]
+}

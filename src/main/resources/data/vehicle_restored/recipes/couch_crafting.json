@@ -1,0 +1,20 @@
+{
+  "type": "vehicle_restored:workstation",
+  "vehicle": "vehicle_restored:couch",
+  "conditions": [
+    {
+      "modid": "furniture_restored",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "materials": [
+    {
+      "item": "furniture_restored:red_sofa",
+      "count": 1
+    },
+    {
+      "tag": "forge:ingots/iron",
+      "count": 8
+    }
+  ]
+}

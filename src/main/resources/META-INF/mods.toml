@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="GPLv3"
+
+[[mods]]
+modId="vehicle_restored"
+version="1.0"
+displayName="Vehicle Restored"
+authors="Numek, MrCrayfish (original mod)"
+credits="Based on MrCrayfish's Vehicle Mod. All the vehicles, models, textures and sounds are the work of MrCrayfish. Phylogeny worked on the original mod."
+description='''
+Brings MrCrayfish's Vehicle Mod back to Minecraft 1.20.1: cars, bikes, boats, planes, trailers, fuel production and more. With Furniture Restored installed, you can also drive a sofa, fly a bath and pilot a sofacopter.
+
+Unofficial port, not affiliated with or endorsed by MrCrayfish. Please do not report problems with this mod to him.
+'''
+
+[[dependencies.vehicle_restored]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47.0.14,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.vehicle_restored]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.vehicle_restored]]
+    modId="furniture_restored"
+    mandatory=false
+    versionRange="[1.0,)"
+    ordering="AFTER"
+    side="BOTH"

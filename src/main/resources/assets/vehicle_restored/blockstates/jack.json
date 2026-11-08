@@ -1,0 +1,36 @@
+{
+    "variants": {
+        "enabled=false,facing=north": {
+            "model": "vehicle_restored:block/disabled_jack",
+            "y": 0
+        },
+        "enabled=true,facing=north": {
+            "model": "vehicle_restored:block/jack",
+            "y": 0
+        },
+        "enabled=false,facing=east": {
+            "model": "vehicle_restored:block/disabled_jack",
+            "y": 90
+        },
+        "enabled=true,facing=east": {
+            "model": "vehicle_restored:block/jack",
+            "y": 90
+        },
+        "enabled=false,facing=south": {
+            "model": "vehicle_restored:block/disabled_jack",
+            "y": 180
+        },
+        "enabled=true,facing=south": {
+            "model": "vehicle_restored:block/jack",
+            "y": 180
+        },
+        "enabled=false,facing=west": {
+            "model": "vehicle_restored:block/disabled_jack",
+            "y": 270
+        },
+        "enabled=true,facing=west": {
+            "model": "vehicle_restored:block/jack",
+            "y": 270
+        }
+    }
+}

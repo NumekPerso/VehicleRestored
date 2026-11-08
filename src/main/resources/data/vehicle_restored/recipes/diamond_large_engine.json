@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " U ",
+    "UEU",
+    " U "
+  ],
+  "key": {
+    "U": {
+      "tag": "forge:gems/diamond"
+    },
+    "E": {
+      "item": "vehicle_restored:gold_large_engine"
+    }
+  },
+  "result": {
+    "item": "vehicle_restored:diamond_large_engine"
+  }
+}

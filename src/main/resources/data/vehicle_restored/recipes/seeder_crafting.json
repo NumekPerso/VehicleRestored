@@ -1,0 +1,14 @@
+{
+  "type": "vehicle_restored:workstation",
+  "vehicle": "vehicle_restored:seeder",
+  "materials": [
+    {
+      "tag": "forge:ingots/iron",
+      "count": 42
+    },
+    {
+      "item": "vehicle_restored:panel",
+      "count": 8
+    }
+  ]
+}

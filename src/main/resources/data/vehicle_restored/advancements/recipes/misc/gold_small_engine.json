@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "vehicle_restored:gold_small_engine"
+    ]
+  },
+  "criteria": {
+    "has_gold_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/gold"
+          }
+        ]
+      }
+    },
+    "has_iron_small_engine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vehicle_restored:iron_small_engine"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "vehicle_restored:gold_small_engine"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gold_ingot",
+      "has_iron_small_engine",
+      "has_the_recipe"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,18 @@
+{
+  "type": "vehicle_restored:workstation",
+  "vehicle": "vehicle_restored:bumper_car",
+  "materials": [
+    {
+      "tag": "forge:ingots/iron",
+      "count": 36
+    },
+    {
+      "item": "minecraft:redstone",
+      "count": 8
+    },
+    {
+      "item": "vehicle_restored:panel",
+      "count": 8
+    }
+  ]
+}

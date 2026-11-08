@@ -1,0 +1,18 @@
+{
+  "type": "vehicle_restored:workstation",
+  "vehicle": "vehicle_restored:storage_trailer",
+  "materials": [
+    {
+      "tag": "forge:ingots/iron",
+      "count": 36
+    },
+    {
+      "item": "vehicle_restored:panel",
+      "count": 2
+    },
+    {
+      "item": "minecraft:chest",
+      "count": 1
+    }
+  ]
+}

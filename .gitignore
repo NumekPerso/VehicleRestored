@@ -1,0 +1,20 @@
+.gradle/
+build/
+run/
+logs/
+out/
+bin/
+reference/
+libs/
+tools/
+src/main/java/com/mrcrayfish/vehicle/client/dev/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/

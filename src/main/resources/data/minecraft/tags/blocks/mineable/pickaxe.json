@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "vehicle_restored:traffic_cone",
+    "vehicle_restored:fluid_extractor",
+    "vehicle_restored:fluid_mixer",
+    "vehicle_restored:gas_pump",
+    "vehicle_restored:fluid_pipe",
+    "vehicle_restored:fluid_pump",
+    "vehicle_restored:fuel_drum",
+    "vehicle_restored:industrial_fuel_drum",
+    "vehicle_restored:workstation",
+    "vehicle_restored:vehicle_crate",
+    "vehicle_restored:jack"
+  ]
+}

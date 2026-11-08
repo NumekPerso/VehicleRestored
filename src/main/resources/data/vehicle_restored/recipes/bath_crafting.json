@@ -1,0 +1,20 @@
+{
+  "type": "vehicle_restored:workstation",
+  "vehicle": "vehicle_restored:bath",
+  "conditions": [
+    {
+      "modid": "furniture_restored",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "materials": [
+    {
+      "item": "furniture_restored:bath",
+      "count": 1
+    },
+    {
+      "item": "minecraft:nether_star",
+      "count": 1
+    }
+  ]
+}

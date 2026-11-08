@@ -1,0 +1,6 @@
+{
+	"parent": "vehicle_restored:block/fuel_drum",
+	"textures": {
+		"fuel_drum": "vehicle_restored:model/industrial_fuel_drum"
+	}
+}

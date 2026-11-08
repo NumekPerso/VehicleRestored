@@ -1,0 +1,24 @@
+{
+    "loader": "forge:separate_transforms",
+    "gui_light": "side",
+    "textures": {
+        "particle": "vehicle_restored:model/spray_can"
+    },
+    "base": {
+        "parent": "vehicle_restored:item/spray_can_default"
+    },
+    "perspectives": {
+        "thirdperson_righthand": {
+            "parent": "vehicle_restored:item/spray_can_held"
+        },
+        "thirdperson_lefthand": {
+            "parent": "vehicle_restored:item/spray_can_held"
+        },
+        "firstperson_righthand": {
+            "parent": "vehicle_restored:item/spray_can_held"
+        },
+        "firstperson_lefthand": {
+            "parent": "vehicle_restored:item/spray_can_held"
+        }
+    }
+}

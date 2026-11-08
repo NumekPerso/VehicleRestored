@@ -1,0 +1,18 @@
+{
+  "type": "vehicle_restored:workstation",
+  "vehicle": "vehicle_restored:dirt_bike",
+  "materials": [
+    {
+      "tag": "forge:ingots/iron",
+      "count": 32
+    },
+    {
+      "item": "vehicle_restored:panel",
+      "count": 2
+    },
+    {
+      "item": "minecraft:gray_wool",
+      "count": 2
+    }
+  ]
+}

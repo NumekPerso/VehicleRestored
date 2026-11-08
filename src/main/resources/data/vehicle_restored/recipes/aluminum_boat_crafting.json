@@ -1,0 +1,14 @@
+{
+  "type": "vehicle_restored:workstation",
+  "vehicle": "vehicle_restored:aluminum_boat",
+  "materials": [
+    {
+      "tag": "forge:ingots/iron",
+      "count": 80
+    },
+    {
+      "item": "vehicle_restored:panel",
+      "count": 10
+    }
+  ]
+}

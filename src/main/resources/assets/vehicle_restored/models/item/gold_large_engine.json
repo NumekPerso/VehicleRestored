@@ -1,0 +1,6 @@
+{
+    "parent": "vehicle_restored:item/large_engine",
+    "textures": {
+        "large_engine": "vehicle_restored:model/gold_large_engine"
+    }
+}

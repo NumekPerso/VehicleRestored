@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "IDI",
+    "IWI",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "D": {
+      "tag": "forge:dyes/white"
+    },
+    "W": {
+      "item": "minecraft:bucket"
+    }
+  },
+  "result": {
+    "item": "vehicle_restored:spray_can"
+  }
+}

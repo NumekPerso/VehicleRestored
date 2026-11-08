@@ -1,0 +1,6 @@
+{
+	"parent": "vehicle_restored:item/large_engine",
+	"textures": {
+		"large_engine": "vehicle_restored:model/iron_large_engine"
+	}
+}

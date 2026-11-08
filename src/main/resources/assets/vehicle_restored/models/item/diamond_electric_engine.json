@@ -1,0 +1,6 @@
+{
+    "parent": "vehicle_restored:item/electric_engine",
+    "textures": {
+        "electric_engine": "vehicle_restored:model/diamond_electric_engine"
+    }
+}
