@@ -22,6 +22,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.lwjgl.glfw.GLFW;
 
 /**
  * Author: MrCrayfish
@@ -29,6 +30,16 @@ import net.minecraftforge.registries.ForgeRegistries;
 public interface RayTraceFunction
 {
     InteractionHand apply(EntityRayTracer rayTracer, EntityRayTracer.RayTraceResultRotated result, Player player);
+
+    /**
+     * Whether the right mouse button is physically held down. The "use" key mapping cannot be used:
+     * the ray tracer cancels the right click on the fuel port before Minecraft updates the key
+     * mappings, so keyUse never becomes pressed while refueling. Same check as the original mod.
+     */
+    static boolean isRightClicking()
+    {
+        return GLFW.glfwGetMouseButton(Minecraft.getInstance().getWindow().getWindow(), GLFW.GLFW_MOUSE_BUTTON_RIGHT) == GLFW.GLFW_PRESS;
+    }
 
     /**
      * Checks if fuel can be transferred from a jerry can to a powered vehicle, and sends a packet to do so every other tick, if it can
@@ -45,7 +56,7 @@ public interface RayTraceFunction
         if(!poweredVehicle.requiresFuel() || poweredVehicle.getCurrentFuel() >= poweredVehicle.getFuelCapacity())
             return null;
 
-        gasPump: if(SyncedPlayerData.instance().get(player, ModDataKeys.GAS_PUMP).isPresent() && Minecraft.getInstance().options.keyUse.isDown())
+        gasPump: if(SyncedPlayerData.instance().get(player, ModDataKeys.GAS_PUMP).isPresent() && isRightClicking())
         {
             BlockPos pos = SyncedPlayerData.instance().get(player, ModDataKeys.GAS_PUMP).get();
             BlockEntity tileEntity = player.level().getBlockEntity(pos);
@@ -72,7 +83,7 @@ public interface RayTraceFunction
         for(InteractionHand hand : InteractionHand.values())
         {
             ItemStack stack = player.getItemInHand(hand);
-            if(stack.isEmpty() || !(stack.getItem() instanceof JerryCanItem) || !Minecraft.getInstance().options.keyUse.isDown())
+            if(stack.isEmpty() || !(stack.getItem() instanceof JerryCanItem) || !isRightClicking())
                 continue;
 
             Optional<IFluidHandlerItem> optional = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve();

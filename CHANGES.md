@@ -1,3 +1,7 @@
+## 1.2 - 2026-11-09
+
+1. Fixed vehicles that could not be refueled, neither with a jerry can nor with the gas pump. Holding the right mouse button on the fuel port did nothing: the port checked the "use" key, which never registers as held because the mod takes over that click. It now checks the right mouse button itself, as the original mod did.
+
 ## 1.1 - 2026-11-09
 
 1. Fixed a crash at startup with Immersive Vehicles and its content packs ("Unable to fit" while stitching textures). The block texture atlas took the "model", "vehicle" and "vehicles" texture folders of every mod, and the large vehicle textures of these packs did not fit in it. It now only takes the textures of Vehicle Restored.
