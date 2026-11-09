@@ -1,3 +1,9 @@
+## 1.1 - 2026-11-09
+
+1. Fixed a crash at startup with Immersive Vehicles and its content packs ("Unable to fit" while stitching textures). The block texture atlas took the "model", "vehicle" and "vehicles" texture folders of every mod, and the large vehicle textures of these packs did not fit in it. It now only takes the textures of Vehicle Restored.
+
+## 1.0
+
 1. Ported the 0.45.2 version of the Vehicle Mod (Minecraft 1.16.5) to Minecraft 1.20.1 and Forge 47.
 2. Replaced the Obfuscate library with code inside the mod: the data synced on players (trailer being hitched, gas pump nozzle in hand) and the events used to pose the player model. The mod no longer needs any other mod.
 3. Removed the support for the Controllable gamepad mod.
