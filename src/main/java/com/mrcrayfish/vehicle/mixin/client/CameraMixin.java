@@ -1,5 +1,6 @@
 package com.mrcrayfish.vehicle.mixin.client;
 
+import com.mrcrayfish.vehicle.entity.HelicopterEntity;
 import com.mrcrayfish.vehicle.entity.VehicleEntity;
 import net.minecraft.client.Camera;
 import net.minecraft.world.entity.Entity;
@@ -28,6 +29,22 @@ public abstract class CameraMixin
 
     @Shadow
     protected abstract void setPosition(Vec3 position);
+
+    /**
+     * A flying helicopter tilts its body, and the player is drawn tilted with it, but the camera
+     * stayed at the untilted eye position: at full speed it ended up behind the seats in first
+     * person. The eye position is tilted around the helicopter like its body, before the third
+     * person camera moves back from it.
+     */
+    @Inject(method = "setup", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Camera;setPosition(DDD)V", shift = At.Shift.AFTER))
+    private void vehicleRestored$tiltWithHelicopter(BlockGetter level, Entity entity, boolean detached, boolean thirdPersonReverse, float partialTick, CallbackInfo ci)
+    {
+        if(entity.getVehicle() instanceof HelicopterEntity helicopter)
+        {
+            Vec3 origin = helicopter.getPosition(partialTick);
+            this.setPosition(origin.add(helicopter.tiltWithBody(this.getPosition().subtract(origin), partialTick)));
+        }
+    }
 
     @Inject(method = "setup", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Camera;getMaxZoom(D)D"))
     private void vehicleRestored$raiseCamera(BlockGetter level, Entity entity, boolean detached, boolean thirdPersonReverse, float partialTick, CallbackInfo ci)

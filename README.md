@@ -36,7 +36,7 @@ The mod ID is `vehicle_restored`. Worlds made with the original Vehicle Mod cann
 ./gradlew build
 ```
 
-The jar, `VehicleRestored-forge-1.20.1-1.2.jar`, is written to `build/libs`.
+The jar, `VehicleRestored-forge-1.20.1-1.3.jar`, is written to `build/libs`.
 
 To test the furniture vehicles in the development client, put `FurnitureRestored-forge-1.20.1-1.0.jar` in the `libs` folder.
 

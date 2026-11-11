@@ -22,6 +22,8 @@ public class GasPumpTankRenderer implements BlockEntityRenderer<GasPumpTankTileE
 {
     private final BlockEntityRenderDispatcher renderer;
 
+    /* After the rotation below, the glass of the 1.12.2 pump model faces the x sides of the fluid box,
+     * which FluidUtils.drawFluidInWorld names NORTH (x) and SOUTH (x + width) */
     private static final FluidUtils.FluidSides FLUID_SIDES = new FluidUtils.FluidSides(Direction.NORTH, Direction.SOUTH, Direction.UP);
 
     public GasPumpTankRenderer(BlockEntityRendererProvider.Context context)
@@ -46,8 +48,11 @@ public class GasPumpTankRenderer implements BlockEntityRenderer<GasPumpTankTileE
         matrixStack.translate(0.5, 0.5, 0.5);
         matrixStack.mulPose(Axis.POSITIVE_Y.rotationDegrees(direction.get2DDataValue() * -90F - 90F));
         matrixStack.translate(-0.5, -0.5, -0.5);
-        float height = 11.0F * (tank.getFluidAmount() / (float) tank.getCapacity());
-        FluidUtils.drawFluidInWorld(tank, world, gasPump.getBlockPos(), matrixStack, renderTypeBuffer, 2.01F * 0.0625F, 4F * 0.0625F, 5F * 0.0625F, (12 - 0.02F) * 0.0625F, height * 0.0625F, 6F * 0.0625F, light, FLUID_SIDES);
+        // The fluid fills the glass box of the 1.12.2 pump model (x 4-12, y 3-14, z 3-13 in the
+        // model), slightly inset so it stays behind the glass. The box of the 0.45.2 model stuck out
+        // of the glass by one pixel at the front, at the back and at the top.
+        float height = 10.98F * (tank.getFluidAmount() / (float) tank.getCapacity());
+        FluidUtils.drawFluidInWorld(tank, world, gasPump.getBlockPos(), matrixStack, renderTypeBuffer, 3.05F * 0.0625F, 3.01F * 0.0625F, 4.01F * 0.0625F, 9.9F * 0.0625F, height * 0.0625F, 7.98F * 0.0625F, light, FLUID_SIDES);
         matrixStack.popPose();
     }
 }

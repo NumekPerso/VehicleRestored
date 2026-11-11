@@ -106,7 +106,7 @@ public class FluidMixerRecipe implements Recipe<FluidMixerTileEntity>
         if(index == -1) return false;
         Fluid inputTwo = fluidMixer.getBlazeTank().getFluid().getFluid();
         if(!inputTwo.equals(this.inputs[index].getFluid())) return false;
-        return InventoryUtil.areItemStacksEqualIgnoreCount(fluidMixer.getItem(FluidMixerTileEntity.SLOT_INGREDIENT), this.ingredient);
+        return InventoryUtil.matchesRecipeIngredient(fluidMixer.getItem(FluidMixerTileEntity.SLOT_INGREDIENT), this.ingredient);
     }
 
     @Override

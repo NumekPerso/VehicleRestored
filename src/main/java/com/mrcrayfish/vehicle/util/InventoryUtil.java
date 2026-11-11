@@ -225,6 +225,21 @@ public class InventoryUtil
         return false;
     }
 
+    /**
+     * Checks an item against the ingredient of a fluid extractor or fluid mixer recipe, like the
+     * vanilla recipes do: the item must be the same, and its NBT is only compared when the recipe
+     * asks for some. Extra NBT or capabilities on the stack (added by the creative tab, JEI or
+     * other mods) used to stop the machine from starting.
+     */
+    public static boolean matchesRecipeIngredient(ItemStack stack, ItemStack ingredient)
+    {
+        if(stack.isEmpty() || stack.getItem() != ingredient.getItem())
+        {
+            return false;
+        }
+        return ingredient.getTag() == null || net.minecraft.nbt.NbtUtils.compareNbt(ingredient.getTag(), stack.getTag(), true);
+    }
+
     public static boolean areItemStacksEqualIgnoreCount(ItemStack source, ItemStack target)
     {
         if(source.getItem() != target.getItem())

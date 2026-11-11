@@ -33,6 +33,27 @@ public abstract class HelicopterEntity extends PoweredVehicleEntity
     public float bladeRotation;
     public float prevBladeRotation;
 
+    /**
+     * Tilts an offset from the origin of the helicopter the same way its body is tilted when it
+     * flies (see AbstractHelicopterRenderer#applyPreRotations), so the camera can follow the seat.
+     *
+     * @param offset       a position relative to the interpolated position of the helicopter
+     * @param partialTicks the partial ticks of the frame
+     * @return the tilted offset
+     */
+    public Vec3 tiltWithBody(Vec3 offset, float partialTicks)
+    {
+        float tiltZ = Mth.lerp(partialTicks, this.prevBodyRotationX, this.bodyRotationX);
+        float tiltX = Mth.lerp(partialTicks, this.prevBodyRotationZ, this.bodyRotationZ);
+        if(tiltZ == 0F && tiltX == 0F)
+        {
+            return offset;
+        }
+        org.joml.Vector3f vector = new org.joml.Vector3f((float) offset.x, (float) offset.y, (float) offset.z);
+        new org.joml.Quaternionf().rotateZ(tiltZ * Mth.DEG_TO_RAD).rotateX(tiltX * Mth.DEG_TO_RAD).transform(vector);
+        return new Vec3(vector.x(), vector.y(), vector.z());
+    }
+
     public float prevBodyRotationX;
     public float prevBodyRotationY;
     public float prevBodyRotationZ;

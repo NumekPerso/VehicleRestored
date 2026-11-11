@@ -41,7 +41,7 @@ public class FluidExtractorRecipe implements Recipe<FluidExtractorTileEntity>
     public boolean matches(FluidExtractorTileEntity fluidExtractor, Level worldIn)
     {
         ItemStack source = fluidExtractor.getItem(FluidExtractorTileEntity.SLOT_FLUID_SOURCE);
-        return InventoryUtil.areItemStacksEqualIgnoreCount(source, this.ingredient);
+        return InventoryUtil.matchesRecipeIngredient(source, this.ingredient);
     }
 
     @Override

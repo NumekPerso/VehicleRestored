@@ -4,7 +4,7 @@ license="GPLv3"
 
 [[mods]]
 modId="vehicle_restored"
-version="1.2"
+version="1.3"
 displayName="Vehicle Restored"
 authors="Numek, MrCrayfish (original mod)"
 credits="Based on MrCrayfish's Vehicle Mod. All the vehicles, models, textures and sounds are the work of MrCrayfish. Phylogeny worked on the original mod."

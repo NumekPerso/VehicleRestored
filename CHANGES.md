@@ -1,3 +1,12 @@
+## 1.3 - 2026-11-11
+
+1. Fixed the fuel of the gas pump, the fuel drums, the fluid extractor and the fluid mixer that was sometimes lost when the world was reloaded. A change of fluid did not mark the block as changed, so it was only saved when something else changed in the chunk.
+2. Fixed the fluid extractor and the fluid mixer not starting with ingredients that carry extra data, for example items taken from the creative tab or from another mod. The ingredient is now recognised by its item, like in vanilla recipes.
+3. Fixed vehicles veering left or right with a gamepad whose stick does not come back exactly to the centre. Small sideways inputs no longer steer the vehicle.
+4. The camera now follows the seat when a flying helicopter tilts: in first person it no longer ends up behind the seats at full speed, and the third person camera turns around the tilted seat.
+5. The fluid in the gas pump now stays inside the glass of its model, instead of sticking out at the front, at the back and at the top, and its sides show through the glass.
+6. The 3D preview of the vehicle crates measures each vehicle, centres it on its turning axis and scales it to fit the preview, so the large vehicles such as the sports plane and the golf cart no longer overflow it and the small ones are no longer tiny.
+
 ## 1.2 - 2026-11-09
 
 1. Fixed vehicles that could not be refueled, neither with a jerry can nor with the gas pump. Holding the right mouse button on the fuel port did nothing: the port checked the "use" key, which never registers as held because the mod takes over that click. It now checks the right mouse button itself, as the original mod did.

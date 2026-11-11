@@ -415,7 +415,7 @@ public class FluidExtractorTileEntity extends TileFluidHandlerSynced implements 
     public boolean isValidIngredient(ItemStack ingredient)
     {
         List<FluidExtractorRecipe> recipes = this.level.getRecipeManager().getRecipes().stream().filter(recipe -> recipe.getType() == VehicleRecipeTypes.FLUID_EXTRACTOR.get()).map(recipe -> (FluidExtractorRecipe) recipe).collect(Collectors.toList());
-        return recipes.stream().anyMatch(recipe -> InventoryUtil.areItemStacksEqualIgnoreCount(ingredient, recipe.getIngredient()));
+        return recipes.stream().anyMatch(recipe -> InventoryUtil.matchesRecipeIngredient(ingredient, recipe.getIngredient()));
     }
 
     private net.minecraftforge.common.util.LazyOptional<?> itemHandler = net.minecraftforge.common.util.LazyOptional.of(this::createUnSidedHandler);

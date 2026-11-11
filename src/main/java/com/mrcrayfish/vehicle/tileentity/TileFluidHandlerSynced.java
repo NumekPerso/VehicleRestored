@@ -24,7 +24,7 @@ public class TileFluidHandlerSynced extends TileFluidHandler
             @Override
             protected void onContentsChanged()
             {
-                TileFluidHandlerSynced.this.syncFluidToClient();
+                TileFluidHandlerSynced.this.onTankChanged();
             }
         };
     }
@@ -37,9 +37,20 @@ public class TileFluidHandlerSynced extends TileFluidHandler
             @Override
             protected void onContentsChanged()
             {
-                TileFluidHandlerSynced.this.syncFluidToClient();
+                TileFluidHandlerSynced.this.onTankChanged();
             }
         };
+    }
+
+    /**
+     * Marks the block entity as changed, so the chunk is saved with the new fluid amount, and sends
+     * the new amount to the clients. Without setChanged, the fluid was only saved when something
+     * else marked the chunk, so it was sometimes lost when the world was reloaded.
+     */
+    protected void onTankChanged()
+    {
+        this.setChanged();
+        this.syncFluidToClient();
     }
 
     public void syncFluidToClient()

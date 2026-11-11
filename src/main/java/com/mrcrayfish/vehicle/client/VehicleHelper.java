@@ -116,13 +116,20 @@ public class VehicleHelper
         return PoweredVehicleEntity.AccelerationDirection.fromEntity(entity);
     }
 
+    /**
+     * Below this value, the sideways input counts as going straight. The keyboard gives -1, 0 or 1
+     * (0.3 when crouching), but a gamepad stick that does not come back exactly to the centre gives
+     * small values, and any value used to steer at full rate, so the vehicle kept veering.
+     */
+    private static final float TURN_DEAD_ZONE = 0.25F;
+
     public static PoweredVehicleEntity.TurnDirection getTurnDirection(LivingEntity entity)
     {
-        if(entity.xxa < 0)
+        if(entity.xxa < -TURN_DEAD_ZONE)
         {
             return PoweredVehicleEntity.TurnDirection.RIGHT;
         }
-        else if(entity.xxa > 0)
+        else if(entity.xxa > TURN_DEAD_ZONE)
         {
             return PoweredVehicleEntity.TurnDirection.LEFT;
         }

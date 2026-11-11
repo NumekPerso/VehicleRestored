@@ -52,9 +52,25 @@ public class FluidMixerTileEntity extends TileEntitySynced implements Container,
 {
     private NonNullList<ItemStack> inventory = NonNullList.withSize(7, ItemStack.EMPTY);
 
-    private FluidTank tankBlaze = new FluidTank(Config.SERVER.mixerInputCapacity.get(), this::isValidFluid);
-    private FluidTank tankEnderSap = new FluidTank(Config.SERVER.mixerInputCapacity.get(), this::isValidFluid);
-    private FluidTank tankFuelium = new FluidTank(Config.SERVER.mixerOutputCapacity.get(), stack -> stack.getFluid() == ModFluids.FUELIUM.get());
+    private FluidTank tankBlaze = this.createTank(Config.SERVER.mixerInputCapacity.get(), this::isValidFluid);
+    private FluidTank tankEnderSap = this.createTank(Config.SERVER.mixerInputCapacity.get(), this::isValidFluid);
+    private FluidTank tankFuelium = this.createTank(Config.SERVER.mixerOutputCapacity.get(), stack -> stack.getFluid() == ModFluids.FUELIUM.get());
+
+    /**
+     * A tank that marks the mixer as changed when its fluid changes (filled by a pipe, emptied by a
+     * jerry can...), so the new amount is saved with the chunk
+     */
+    private FluidTank createTank(int capacity, java.util.function.Predicate<net.minecraftforge.fluids.FluidStack> validator)
+    {
+        return new FluidTank(capacity, validator)
+        {
+            @Override
+            protected void onContentsChanged()
+            {
+                FluidMixerTileEntity.this.setChanged();
+            }
+        };
+    }
 
     private static final int SLOT_FUEL = 0;
     public static final int SLOT_INGREDIENT = 1;
@@ -532,7 +548,7 @@ public class FluidMixerTileEntity extends TileEntitySynced implements Container,
     private boolean isValidIngredient(ItemStack ingredient)
     {
         List<FluidMixerRecipe> recipes = this.level.getRecipeManager().getRecipes().stream().filter(recipe -> recipe.getType() == VehicleRecipeTypes.FLUID_MIXER.get()).map(recipe -> (FluidMixerRecipe) recipe).collect(Collectors.toList());
-        return recipes.stream().anyMatch(recipe -> InventoryUtil.areItemStacksEqualIgnoreCount(ingredient, recipe.getIngredient()));
+        return recipes.stream().anyMatch(recipe -> InventoryUtil.matchesRecipeIngredient(ingredient, recipe.getIngredient()));
     }
 
     private boolean isValidFluid(FluidStack stack)
