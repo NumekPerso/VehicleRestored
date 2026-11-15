@@ -138,7 +138,7 @@ public class SportsPlaneRenderer extends AbstractPlaneRenderer<SportsPlaneEntity
             float bodyRoll = entity.prevBodyRotationZ + (entity.bodyRotationZ - entity.prevBodyRotationZ) * partialTicks;
             matrixStack.mulPose(Axis.POSITIVE_Z.rotationDegrees(bodyRoll));
             matrixStack.mulPose(Axis.POSITIVE_X.rotationDegrees(-bodyPitch));
-            matrixStack.translate(-offsetX, -offsetY, -offsetX);
+            matrixStack.translate(-offsetX, -offsetY, -offsetZ);
         }
     }
 

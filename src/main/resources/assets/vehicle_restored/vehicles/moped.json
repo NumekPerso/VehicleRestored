@@ -40,6 +40,8 @@
             "side": "none",
             "position": "rear",
             "offset": [ 0.0, 0.0, -6.7 ],
+            "scale": [ 1.0, 0.0, 0.0 ],
+            "autoScale": true,
             "particles": true
         }
     ],

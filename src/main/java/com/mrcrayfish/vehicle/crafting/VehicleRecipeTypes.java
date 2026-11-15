@@ -17,6 +17,7 @@ public class VehicleRecipeTypes
     public static final RegistryObject<RecipeType<FluidExtractorRecipe>> FLUID_EXTRACTOR = register("fluid_extractor");
     public static final RegistryObject<RecipeType<FluidMixerRecipe>> FLUID_MIXER = register("fluid_mixer");
     public static final RegistryObject<RecipeType<WorkstationRecipe>> WORKSTATION = register("workstation");
+    public static final RegistryObject<RecipeType<AdvancedWorkshopRecipe>> ADVANCED_WORKSHOP = register("advanced_workshop");
 
     private static <T extends Recipe<?>> RegistryObject<RecipeType<T>> register(String name)
     {

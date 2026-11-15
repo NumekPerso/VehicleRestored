@@ -1,0 +1,15 @@
+{
+  "type": "vehicle_restored:advanced_workshop",
+  "category": "military",
+  "result": { "item": "vehicle_restored:light_shell_pack", "count": 2 },
+  "energy_per_tick": 100,
+  "ingredients": [
+    { "item": "minecraft:iron_ingot", "count": 1 },
+    { "item": "minecraft:gunpowder", "count": 2 }
+  ],
+  "phases": [
+    { "name": "shell_bodies", "ticks": 60 },
+    { "name": "propellant", "ticks": 40 },
+    { "name": "assembly", "ticks": 30 }
+  ]
+}

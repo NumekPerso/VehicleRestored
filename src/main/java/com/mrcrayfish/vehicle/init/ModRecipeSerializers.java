@@ -1,6 +1,7 @@
 package com.mrcrayfish.vehicle.init;
 
 import com.mrcrayfish.vehicle.Reference;
+import com.mrcrayfish.vehicle.crafting.AdvancedWorkshopRecipeSerializer;
 import com.mrcrayfish.vehicle.crafting.FluidExtractorRecipeSerializer;
 import com.mrcrayfish.vehicle.crafting.FluidMixerRecipeSerializer;
 import com.mrcrayfish.vehicle.crafting.WorkstationRecipeSerializer;
@@ -24,4 +25,5 @@ public class ModRecipeSerializers
     public static final RegistryObject<FluidExtractorRecipeSerializer> FLUID_EXTRACTOR = REGISTER.register("fluid_extractor", FluidExtractorRecipeSerializer::new);
     public static final RegistryObject<FluidMixerRecipeSerializer> FLUID_MIXER = REGISTER.register("fluid_mixer", FluidMixerRecipeSerializer::new);
     public static final RegistryObject<WorkstationRecipeSerializer> WORKSTATION = REGISTER.register("workstation", WorkstationRecipeSerializer::new);
+    public static final RegistryObject<AdvancedWorkshopRecipeSerializer> ADVANCED_WORKSHOP = REGISTER.register("advanced_workshop", AdvancedWorkshopRecipeSerializer::new);
 }

@@ -24,11 +24,15 @@ public class ModTileEntities
     public static final RegistryObject<BlockEntityType<IndustrialFuelDrumTileEntity>> INDUSTRIAL_FUEL_DRUM = register("industrial_fuel_drum", IndustrialFuelDrumTileEntity::new, () -> new Block[]{ModBlocks.INDUSTRIAL_FUEL_DRUM.get()});
     public static final RegistryObject<BlockEntityType<FluidMixerTileEntity>> FLUID_MIXER = register("fluid_mixer", FluidMixerTileEntity::new, () -> new Block[]{ModBlocks.FLUID_MIXER.get()});
     public static final RegistryObject<BlockEntityType<VehicleCrateTileEntity>> VEHICLE_CRATE = register("vehicle_crate", VehicleCrateTileEntity::new, () -> new Block[]{ModBlocks.VEHICLE_CRATE.get()});
+    public static final RegistryObject<BlockEntityType<MilitaryCrateTileEntity>> MILITARY_CRATE = register("military_crate", MilitaryCrateTileEntity::new, () -> new Block[]{ModBlocks.MILITARY_CRATE.get()});
     public static final RegistryObject<BlockEntityType<WorkstationTileEntity>> WORKSTATION = register("workstation", WorkstationTileEntity::new, () -> new Block[]{ModBlocks.WORKSTATION.get()});
     public static final RegistryObject<BlockEntityType<JackTileEntity>> JACK = register("jack", JackTileEntity::new, () -> new Block[]{ModBlocks.JACK.get()});
     public static final RegistryObject<BlockEntityType<BoostTileEntity>> BOOST = register("boost", BoostTileEntity::new, () -> new Block[]{});
     public static final RegistryObject<BlockEntityType<GasPumpTileEntity>> GAS_PUMP = register("gas_pump", GasPumpTileEntity::new, () -> new Block[]{ModBlocks.GAS_PUMP.get()});
     public static final RegistryObject<BlockEntityType<GasPumpTankTileEntity>> GAS_PUMP_TANK = register("gas_pump_tank", GasPumpTankTileEntity::new, () -> new Block[]{ModBlocks.GAS_PUMP.get()});
+    public static final RegistryObject<BlockEntityType<AdvancedWorkshopTileEntity>> ADVANCED_WORKSHOP = register("advanced_workshop", AdvancedWorkshopTileEntity::new, () -> new Block[]{ModBlocks.ADVANCED_WORKSHOP.get()});
+    public static final RegistryObject<BlockEntityType<AdvancedWorkshopPartTileEntity>> ADVANCED_WORKSHOP_PART = register("advanced_workshop_part", AdvancedWorkshopPartTileEntity::new, () -> new Block[]{ModBlocks.ADVANCED_WORKSHOP.get()});
+    public static final RegistryObject<BlockEntityType<CreativeBatteryTileEntity>> CREATIVE_BATTERY = register("creative_battery", CreativeBatteryTileEntity::new, () -> new Block[]{ModBlocks.CREATIVE_BATTERY.get()});
 
     private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String id, BlockEntityType.BlockEntitySupplier<T> factoryIn, Supplier<Block[]> validBlocksSupplier)
     {

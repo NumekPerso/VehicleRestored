@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "BNB",
+    "CWC",
+    "BSB"
+  ],
+  "key": {
+    "B": {
+      "tag": "forge:storage_blocks/iron"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "C": {
+      "item": "vehicle_restored:circuit_board"
+    },
+    "W": {
+      "item": "vehicle_restored:workstation"
+    },
+    "S": {
+      "item": "vehicle_restored:servo_motor"
+    }
+  },
+  "result": {
+    "item": "vehicle_restored:advanced_workshop"
+  }
+}

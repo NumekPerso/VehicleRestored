@@ -161,7 +161,7 @@ public abstract class VehicleEntity extends Entity implements IEntityAdditionalS
                 }
                 return InteractionResult.SUCCESS;
             }
-            else if(heldItem.getItem() == ModItems.HAMMER.get() && this.getVehicle() instanceof EntityJack)
+            else if(heldItem.getItem() == ModItems.HAMMER.get() && this.getVehicle() instanceof EntityJack && this.canRepairWithHammer())
             {
                 if(this.getHealth() < this.getMaxHealth())
                 {
@@ -379,7 +379,9 @@ public abstract class VehicleEntity extends Entity implements IEntityAdditionalS
                     this.setTimeSinceHit(10);
                     this.setHealth(this.getHealth() - amount);
                 }
-                boolean isCreativeMode = trueSource instanceof Player && ((Player) trueSource).isCreative();
+                // a player in creative breaks a vehicle at once by hitting it directly, not with what they shoot (a
+                // shell or a bullet fired from a tank takes health like any other damage)
+                boolean isCreativeMode = trueSource instanceof Player && ((Player) trueSource).isCreative() && source.getDirectEntity() == trueSource;
                 if(isCreativeMode || this.getHealth() < 0.0F)
                 {
                     this.onVehicleDestroyed(trueSource instanceof LivingEntity living ? living : null);
@@ -429,6 +431,12 @@ public abstract class VehicleEntity extends Entity implements IEntityAdditionalS
                 }*/
             }
         }
+    }
+
+    /** Whether the hammer gives the vehicle its health back while it stands on a jack */
+    public boolean canRepairWithHammer()
+    {
+        return true;
     }
 
     public int getDestroyedStage()
@@ -740,6 +748,16 @@ public abstract class VehicleEntity extends Entity implements IEntityAdditionalS
     public double getCameraHeightOffset()
     {
         return 0.0;
+    }
+
+    /**
+     * Point the third person camera turns around, in the world, or null to turn around the eyes of
+     * the player (the default). Used by vehicles whose seats are far from their centre.
+     */
+    @Nullable
+    public Vec3 getThirdPersonCameraOrigin(float partialTicks)
+    {
+        return null;
     }
 
     public SeatTracker getSeatTracker()

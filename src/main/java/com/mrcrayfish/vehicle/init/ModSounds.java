@@ -21,6 +21,12 @@ public class ModSounds
     public static final RegistryObject<SoundEvent> BLOCK_JACK_HEAD_UP = register("block.jack.head_up");
     public static final RegistryObject<SoundEvent> BLOCK_JACK_AIR_WRENCH_GUN = register("block.jack.air_wrench_gun");
     public static final RegistryObject<SoundEvent> BLOCK_VEHICLE_CRATE_PANEL_LAND = register("block.vehicle_crate.panel_land");
+    public static final RegistryObject<SoundEvent> BLOCK_ADVANCED_WORKSHOP_START = register("block.advanced_workshop.start");
+    public static final RegistryObject<SoundEvent> BLOCK_ADVANCED_WORKSHOP_RUNNING = register("block.advanced_workshop.running");
+    public static final RegistryObject<SoundEvent> BLOCK_ADVANCED_WORKSHOP_MOVING = register("block.advanced_workshop.moving");
+    public static final RegistryObject<SoundEvent> BLOCK_ADVANCED_WORKSHOP_WELDING = register("block.advanced_workshop.welding");
+    public static final RegistryObject<SoundEvent> BLOCK_ADVANCED_WORKSHOP_FINISH = register("block.advanced_workshop.finish");
+    public static final RegistryObject<SoundEvent> BLOCK_ADVANCED_WORKSHOP_CANCEL = register("block.advanced_workshop.cancel");
     public static final RegistryObject<SoundEvent> ENTITY_ATV_ENGINE = register("entity.atv.engine");
     public static final RegistryObject<SoundEvent> ENTITY_BUMPER_CAR_ENGINE = register("entity.bumper_car.engine");
     public static final RegistryObject<SoundEvent> ENTITY_BUMPER_CAR_BONK = register("entity.bumper_car.bonk");
@@ -32,6 +38,12 @@ public class ModSounds
     public static final RegistryObject<SoundEvent> ENTITY_SPORTS_PLANE_ENGINE = register("entity.sports_plane.engine");
     public static final RegistryObject<SoundEvent> ENTITY_TRACTOR_ENGINE = register("entity.tractor.engine");
     public static final RegistryObject<SoundEvent> ENTITY_SPORTS_CAR_ENGINE = register("entity.sports_car.engine");
+    public static final RegistryObject<SoundEvent> ENTITY_TANK_FIRE = register("entity.tank.fire");
+    public static final RegistryObject<SoundEvent> ENTITY_TANK_COAX = register("entity.tank.coax");
+    public static final RegistryObject<SoundEvent> ENTITY_TANK_HEAVY_MG = register("entity.tank.heavy_mg");
+    public static final RegistryObject<SoundEvent> ENTITY_TANK_LIGHT_CANNON = register("entity.tank.light_cannon");
+    public static final RegistryObject<SoundEvent> ENTITY_TANK_SHELL_FLY = register("entity.tank.shell_fly");
+    public static final RegistryObject<SoundEvent> ENTITY_TANK_SHELL_EXPLODE = register("entity.tank.shell_explode");
     public static final RegistryObject<SoundEvent> ENTITY_VEHICLE_HELICOPTER_ROTOR = register("entity.vehicle.helicopter_rotor");
     public static final RegistryObject<SoundEvent> ENTITY_VEHICLE_DESTROYED = register("entity.vehicle.destroyed");
     public static final RegistryObject<SoundEvent> ENTITY_VEHICLE_HORN = register("entity.vehicle.horn");

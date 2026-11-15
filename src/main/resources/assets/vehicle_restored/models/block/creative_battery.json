@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "vehicle_restored:block/creative_battery_top",
+    "bottom": "vehicle_restored:block/creative_battery_top",
+    "side": "vehicle_restored:block/creative_battery_side"
+  }
+}

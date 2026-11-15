@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    " I ",
+    "CPC",
+    " R "
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "C": {
+      "tag": "forge:ingots/copper"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "vehicle_restored:servo_motor",
+    "count": 1
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "multipart": [
+    { "apply": { "model": "vehicle_restored:block/advanced_workshop" } },
+    { "when": { "part": "0", "facing": "south" }, "apply": { "model": "vehicle_restored:block/advanced_workshop/frame_block" } },
+    { "when": { "part": "0", "facing": "south" }, "apply": { "model": "vehicle_restored:block/advanced_workshop/glass_block" } },
+    { "when": { "part": "0", "facing": "west" }, "apply": { "model": "vehicle_restored:block/advanced_workshop/frame_block", "y": 90 } },
+    { "when": { "part": "0", "facing": "west" }, "apply": { "model": "vehicle_restored:block/advanced_workshop/glass_block", "y": 90 } },
+    { "when": { "part": "0", "facing": "north" }, "apply": { "model": "vehicle_restored:block/advanced_workshop/frame_block", "y": 180 } },
+    { "when": { "part": "0", "facing": "north" }, "apply": { "model": "vehicle_restored:block/advanced_workshop/glass_block", "y": 180 } },
+    { "when": { "part": "0", "facing": "east" }, "apply": { "model": "vehicle_restored:block/advanced_workshop/frame_block", "y": 270 } },
+    { "when": { "part": "0", "facing": "east" }, "apply": { "model": "vehicle_restored:block/advanced_workshop/glass_block", "y": 270 } }
+  ]
+}

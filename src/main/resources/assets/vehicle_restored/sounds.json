@@ -246,5 +246,117 @@
       }
     ],
     "subtitle": "subtitles.vehicle_restored.entity.vehicle.helicopter_rotor"
+  },
+  "entity.tank.fire": {
+    "sounds": [
+      {
+        "name": "vehicle_restored:entity/tank/fire",
+        "attenuation_distance": 128
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.entity.tank.fire"
+  },
+  "entity.tank.coax": {
+    "sounds": [
+      {
+        "name": "vehicle_restored:entity/tank/hmg",
+        "attenuation_distance": 64,
+        "pitch": 1.3,
+        "volume": 0.75
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.entity.tank.coax"
+  },
+  "entity.tank.heavy_mg": {
+    "sounds": [
+      {
+        "name": "vehicle_restored:entity/tank/hmg",
+        "attenuation_distance": 96
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.entity.tank.heavy_mg"
+  },
+  "entity.tank.light_cannon": {
+    "sounds": [
+      {
+        "name": "vehicle_restored:entity/tank/light_cannon",
+        "attenuation_distance": 96
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.entity.tank.light_cannon"
+  },
+  "entity.tank.shell_fly": {
+    "sounds": [
+      {
+        "name": "vehicle_restored:entity/tank/shell_fly",
+        "attenuation_distance": 64
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.entity.tank.shell_fly"
+  },
+  "entity.tank.shell_explode": {
+    "sounds": [
+      {
+        "name": "vehicle_restored:entity/tank/shell_explosion",
+        "attenuation_distance": 192
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.entity.tank.shell_explode"
+  },
+  "block.advanced_workshop.start": {
+    "sounds": [
+      {
+        "name": "minecraft:block/beacon/activate",
+        "pitch": 1.25
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.block.advanced_workshop.start"
+  },
+  "block.advanced_workshop.running": {
+    "sounds": [
+      {
+        "name": "minecraft:block/beacon/ambient",
+        "pitch": 1.4
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.block.advanced_workshop.running"
+  },
+  "block.advanced_workshop.moving": {
+    "sounds": [
+      {
+        "name": "vehicle_restored:block/advanced_workshop/moving",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.block.advanced_workshop.moving"
+  },
+  "block.advanced_workshop.welding": {
+    "sounds": [
+      "vehicle_restored:block/advanced_workshop/welding_1",
+      "vehicle_restored:block/advanced_workshop/welding_2",
+      "vehicle_restored:block/advanced_workshop/welding_3",
+      "vehicle_restored:block/advanced_workshop/welding_4",
+      "vehicle_restored:block/advanced_workshop/welding_5",
+      "vehicle_restored:block/advanced_workshop/welding_6"
+    ],
+    "subtitle": "subtitles.vehicle_restored.block.advanced_workshop.welding"
+  },
+  "block.advanced_workshop.finish": {
+    "sounds": [
+      {
+        "name": "minecraft:note/bell",
+        "pitch": 1.2
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.block.advanced_workshop.finish"
+  },
+  "block.advanced_workshop.cancel": {
+    "sounds": [
+      {
+        "name": "minecraft:block/beacon/deactivate",
+        "pitch": 1.25
+      }
+    ],
+    "subtitle": "subtitles.vehicle_restored.block.advanced_workshop.cancel"
   }
 }

@@ -12,6 +12,7 @@ import com.mrcrayfish.vehicle.client.handler.OverlayHandler;
 import com.mrcrayfish.vehicle.client.handler.PlayerModelHandler;
 import com.mrcrayfish.vehicle.client.handler.SprayCanHandler;
 import com.mrcrayfish.vehicle.client.model.SpecialModels;
+import com.mrcrayfish.vehicle.client.particle.TankEffects;
 import com.mrcrayfish.vehicle.client.render.AbstractVehicleRenderer;
 import com.mrcrayfish.vehicle.client.render.EntityVehicleRenderer;
 import com.mrcrayfish.vehicle.client.render.VehicleRenderRegistry;
@@ -26,6 +27,8 @@ import com.mrcrayfish.vehicle.client.screen.EditVehicleScreen;
 import com.mrcrayfish.vehicle.client.screen.FluidExtractorScreen;
 import com.mrcrayfish.vehicle.client.screen.FluidMixerScreen;
 import com.mrcrayfish.vehicle.client.screen.StorageScreen;
+import com.mrcrayfish.vehicle.client.screen.TankAmmoScreen;
+import com.mrcrayfish.vehicle.client.screen.AdvancedWorkshopScreen;
 import com.mrcrayfish.vehicle.client.screen.WorkstationScreen;
 import com.mrcrayfish.vehicle.entity.VehicleEntity;
 import com.mrcrayfish.vehicle.entity.VehicleProperties;
@@ -83,6 +86,8 @@ public class ClientHandler
         modBus.addListener(ClientHandler::onRegisterGuiOverlays);
         modBus.addListener(ClientHandler::onRegisterReloadListeners);
         modBus.addListener(ClientHandler::onRegisterTooltipComponents);
+        modBus.addListener(TankEffects::onRegisterParticles);
+        modBus.addListener(TankEffects::onRegisterShaders);
     }
 
     private static void onRegisterTooltipComponents(RegisterClientTooltipComponentFactoriesEvent event)
@@ -102,6 +107,7 @@ public class ClientHandler
         MinecraftForge.EVENT_BUS.register(new InputHandler());
         MinecraftForge.EVENT_BUS.register(new PlayerModelHandler());
         MinecraftForge.EVENT_BUS.register(new SprayCanHandler());
+        MinecraftForge.EVENT_BUS.register(new com.mrcrayfish.vehicle.client.handler.TankHandler());
         MinecraftForge.EVENT_BUS.register(new ClientEvents());
 
         setupRenderLayers();
@@ -136,6 +142,8 @@ public class ClientHandler
         MenuScreens.register(ModContainers.EDIT_VEHICLE.get(), EditVehicleScreen::new);
         MenuScreens.register(ModContainers.WORKSTATION.get(), WorkstationScreen::new);
         MenuScreens.register(ModContainers.STORAGE.get(), StorageScreen::new);
+        MenuScreens.register(ModContainers.TANK_AMMO.get(), TankAmmoScreen::new);
+        MenuScreens.register(ModContainers.ADVANCED_WORKSHOP.get(), AdvancedWorkshopScreen::new);
     }
 
     private static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event)
@@ -162,6 +170,9 @@ public class ClientHandler
         registerVehicleRenderer(event, ModEntities.QUAD_BIKE.get(), QuadBikeRenderer::new);
         registerVehicleRenderer(event, ModEntities.SPORTS_CAR.get(), SportsCarRenderer::new);
         registerVehicleRenderer(event, ModEntities.COMPACT_HELICOPTER.get(), CompactHelicopterRenderer::new);
+        registerVehicleRenderer(event, ModEntities.TANK.get(), TankRenderer::new);
+        event.registerEntityRenderer(ModEntities.TANK_SHELL.get(), com.mrcrayfish.vehicle.client.render.TankShellRenderer::new);
+        event.registerEntityRenderer(ModEntities.TANK_BULLET.get(), net.minecraft.client.renderer.entity.NoopRenderer::new);
 
         /* Register Trailers */
         registerVehicleRenderer(event, ModEntities.VEHICLE_TRAILER.get(), VehicleTrailerRenderer::new);
@@ -185,10 +196,12 @@ public class ClientHandler
         event.registerBlockEntityRenderer(ModTileEntities.FUEL_DRUM.get(), FuelDrumRenderer::new);
         event.registerBlockEntityRenderer(ModTileEntities.INDUSTRIAL_FUEL_DRUM.get(), FuelDrumRenderer::new);
         event.registerBlockEntityRenderer(ModTileEntities.VEHICLE_CRATE.get(), VehicleCrateRenderer::new);
+        event.registerBlockEntityRenderer(ModTileEntities.MILITARY_CRATE.get(), com.mrcrayfish.vehicle.client.render.tileentity.MilitaryCrateRenderer::new);
         event.registerBlockEntityRenderer(ModTileEntities.JACK.get(), com.mrcrayfish.vehicle.client.render.tileentity.JackRenderer::new);
         event.registerBlockEntityRenderer(ModTileEntities.GAS_PUMP.get(), GasPumpRenderer::new);
         event.registerBlockEntityRenderer(ModTileEntities.GAS_PUMP_TANK.get(), GasPumpTankRenderer::new);
         event.registerBlockEntityRenderer(ModTileEntities.FLUID_PUMP.get(), FluidPumpRenderer::new);
+        event.registerBlockEntityRenderer(ModTileEntities.ADVANCED_WORKSHOP.get(), com.mrcrayfish.vehicle.client.render.tileentity.AdvancedWorkshopRenderer::new);
     }
 
     /**
@@ -264,6 +277,7 @@ public class ClientHandler
             return stage.wait(Unit.INSTANCE).thenRunAsync(() -> {
                 FluidUtils.clearCacheFluidColor();
                 VehicleCrateTooltipComponent.clearCache();
+                com.mrcrayfish.vehicle.client.render.WorkshopBuildPlan.clearCache();
                 EntityRayTracer.instance().clearDataForReregistration();
                 SpecialModels.clearModelCache();
             }, gameExecutor);

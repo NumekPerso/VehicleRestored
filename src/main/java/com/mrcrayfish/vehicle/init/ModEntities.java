@@ -2,6 +2,8 @@ package com.mrcrayfish.vehicle.init;
 
 import com.mrcrayfish.vehicle.Reference;
 import com.mrcrayfish.vehicle.entity.EntityJack;
+import com.mrcrayfish.vehicle.entity.TankBulletEntity;
+import com.mrcrayfish.vehicle.entity.TankShellEntity;
 import com.mrcrayfish.vehicle.entity.trailer.FertilizerTrailerEntity;
 import com.mrcrayfish.vehicle.entity.trailer.FluidTrailerEntity;
 import com.mrcrayfish.vehicle.entity.trailer.SeederTrailerEntity;
@@ -46,6 +48,7 @@ public class ModEntities
     public static final RegistryObject<EntityType<QuadBikeEntity>> QUAD_BIKE = VehicleUtil.createEntityType(REGISTER, "quad_bike", QuadBikeEntity::new, 1.5F, 1.0F);
     public static final RegistryObject<EntityType<SportsCarEntity>> SPORTS_CAR = VehicleUtil.createEntityType(REGISTER, "sports_car", SportsCarEntity::new, 2.0F, 1.0F);
     public static final RegistryObject<EntityType<CompactHelicopterEntity>> COMPACT_HELICOPTER = VehicleUtil.createEntityType(REGISTER, "compact_helicopter", CompactHelicopterEntity::new, 2.0F, 2.0F);
+    public static final RegistryObject<EntityType<TankEntity>> TANK = VehicleUtil.createEntityType(REGISTER, "tank", TankEntity::new, 3.5F, 2.5F);
 
     /* Trailers */
     public static final RegistryObject<EntityType<VehicleEntityTrailer>> VEHICLE_TRAILER = VehicleUtil.createEntityType(REGISTER, "vehicle_trailer", VehicleEntityTrailer::new, 1.5F, 0.75F);
@@ -60,6 +63,10 @@ public class ModEntities
     public static final RegistryObject<EntityType<SofacopterEntity>> SOFACOPTER = VehicleUtil.createModDependentEntityType(REGISTER, Reference.FURNITURE_MOD_ID, "sofacopter", SofacopterEntity::new, 1.0F, 1.0F, true);
 
     /* Other */
+    // Projectiles of the tank: the exact velocity goes with the spawn and the clients fly them; no velocity updates (the
+    // vanilla motion packet clamps the speed to 3.9 blocks per tick per axis and would bend their path)
+    public static final RegistryObject<EntityType<TankShellEntity>> TANK_SHELL = REGISTER.register("tank_shell", () -> EntityType.Builder.<TankShellEntity>of(TankShellEntity::new, MobCategory.MISC).sized(0.4F, 0.4F).clientTrackingRange(16).updateInterval(1).setShouldReceiveVelocityUpdates(false).build(Reference.MOD_ID + ":tank_shell"));
+    public static final RegistryObject<EntityType<TankBulletEntity>> TANK_BULLET = REGISTER.register("tank_bullet", () -> EntityType.Builder.<TankBulletEntity>of(TankBulletEntity::new, MobCategory.MISC).sized(0.15F, 0.15F).clientTrackingRange(8).updateInterval(1).setShouldReceiveVelocityUpdates(false).build(Reference.MOD_ID + ":tank_bullet"));
     public static final RegistryObject<EntityType<EntityJack>> JACK = registerEntity("jack", EntityJack::new, 0.0F, 0.0F);
 
     private static <T extends Entity> RegistryObject<EntityType<T>> registerEntity(String id, BiFunction<EntityType<T>, Level, T> function, float width, float height)

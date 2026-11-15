@@ -1,0 +1,6 @@
+{
+  "__comment": "The breaking particles of the advanced workshop (every cell); the still machine is the model of its main cell (block/advanced_workshop/frame_block and glass_block, see the blockstate), the moving parts are drawn by its block entity renderer",
+  "textures": {
+    "particle": "vehicle_restored:block/advanced_workshop/paint"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "vehicle_restored:advanced_workshop",
+  "category": "military",
+  "result": { "item": "vehicle_restored:bullet_belt", "count": 1 },
+  "energy_per_tick": 80,
+  "ingredients": [
+    { "item": "minecraft:iron_ingot", "count": 1 },
+    { "item": "minecraft:gunpowder", "count": 1 }
+  ],
+  "phases": [
+    { "name": "cartridges", "ticks": 60 },
+    { "name": "belt", "ticks": 40 }
+  ]
+}

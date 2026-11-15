@@ -38,8 +38,11 @@ public class ModBlocks
     public static final RegistryObject<FuelDrumBlock> INDUSTRIAL_FUEL_DRUM = register("industrial_fuel_drum", () -> new IndustrialFuelDrumBlock());
     public static final RegistryObject<Block> WORKSTATION = register("workstation", () -> new WorkstationBlock());
     public static final RegistryObject<Block> VEHICLE_CRATE = register("vehicle_crate", () -> new VehicleCrateBlock(), block -> new VehicleCrateItem(block, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Block> MILITARY_CRATE = register("military_crate", MilitaryCrateBlock::new, block -> new VehicleCrateItem(block, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Block> JACK = register("jack", () -> new JackBlock());
     public static final RegistryObject<Block> JACK_HEAD = register("jack_head", () -> new JackHeadBlock(), null);
+    public static final RegistryObject<Block> ADVANCED_WORKSHOP = register("advanced_workshop", AdvancedWorkshopBlock::new);
+    public static final RegistryObject<Block> CREATIVE_BATTERY = register("creative_battery", CreativeBatteryBlock::new);
     public static final RegistryObject<LiquidBlock> FUELIUM = register("fuelium", () -> new LiquidBlock(ModFluids.FUELIUM, BlockBehaviour.Properties.of().mapColor(MapColor.WATER).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)), null);
     public static final RegistryObject<LiquidBlock> ENDER_SAP = register("ender_sap", () -> new LiquidBlock(ModFluids.ENDER_SAP, BlockBehaviour.Properties.of().mapColor(MapColor.WATER).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)), null);
     public static final RegistryObject<LiquidBlock> BLAZE_JUICE = register("blaze_juice", () -> new LiquidBlock(ModFluids.BLAZE_JUICE, BlockBehaviour.Properties.of().mapColor(MapColor.WATER).replaceable().noCollission().strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)), null);

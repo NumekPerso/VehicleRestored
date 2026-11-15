@@ -1,0 +1,6 @@
+{
+  "__comment": "The breaking particles of the military crate (every cell); the closed crate is the model of its main cell (block/military_crate/closed_block, see the blockstate), the opening is drawn by its block entity renderer",
+  "textures": {
+    "particle": "vehicle_restored:block/military_crate/crate"
+  }
+}

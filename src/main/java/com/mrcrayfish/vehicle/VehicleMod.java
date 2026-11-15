@@ -14,6 +14,7 @@ import com.mrcrayfish.vehicle.entity.VehicleProperties;
 import com.mrcrayfish.vehicle.init.ModBlocks;
 import com.mrcrayfish.vehicle.init.ModContainers;
 import com.mrcrayfish.vehicle.init.ModDataKeys;
+import com.mrcrayfish.vehicle.init.ModParticles;
 import com.mrcrayfish.vehicle.init.ModEntities;
 import com.mrcrayfish.vehicle.init.ModFluids;
 import com.mrcrayfish.vehicle.init.ModItems;
@@ -83,6 +84,7 @@ public class VehicleMod
         ModTileEntities.REGISTER.register(eventBus);
         ModContainers.REGISTER.register(eventBus);
         ModSounds.REGISTER.register(eventBus);
+        ModParticles.REGISTER.register(eventBus);
         ModRecipeSerializers.REGISTER.register(eventBus);
         VehicleRecipeTypes.REGISTER.register(eventBus);
         ModLootFunctions.REGISTER.register(eventBus);

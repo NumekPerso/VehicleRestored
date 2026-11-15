@@ -1,6 +1,7 @@
 package com.mrcrayfish.vehicle.mixin.client;
 
 import com.mrcrayfish.vehicle.entity.HelicopterEntity;
+import com.mrcrayfish.vehicle.entity.PlaneEntity;
 import com.mrcrayfish.vehicle.entity.VehicleEntity;
 import net.minecraft.client.Camera;
 import net.minecraft.world.entity.Entity;
@@ -44,14 +45,29 @@ public abstract class CameraMixin
             Vec3 origin = helicopter.getPosition(partialTick);
             this.setPosition(origin.add(helicopter.tiltWithBody(this.getPosition().subtract(origin), partialTick)));
         }
+        else if(entity.getVehicle() instanceof PlaneEntity plane)
+        {
+            // Same for a plane that climbs, dives or banks: the eyes go with the cockpit
+            Vec3 pivot = plane.getTiltPivot(partialTick);
+            this.setPosition(pivot.add(plane.tiltWithBody(this.getPosition().subtract(pivot), partialTick)));
+        }
     }
 
     @Inject(method = "setup", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Camera;getMaxZoom(D)D"))
     private void vehicleRestored$raiseCamera(BlockGetter level, Entity entity, boolean detached, boolean thirdPersonReverse, float partialTick, CallbackInfo ci)
     {
-        if(entity.getVehicle() instanceof VehicleEntity vehicle && vehicle.getCameraHeightOffset() != 0.0)
+        if(entity.getVehicle() instanceof VehicleEntity vehicle)
         {
-            this.setPosition(this.getPosition().add(0, vehicle.getCameraHeightOffset(), 0));
+            // Third person: some vehicles (the tank) turn the camera around their own centre
+            Vec3 origin = detached ? vehicle.getThirdPersonCameraOrigin(partialTick) : null;
+            if(origin != null)
+            {
+                this.setPosition(origin);
+            }
+            if(vehicle.getCameraHeightOffset() != 0.0)
+            {
+                this.setPosition(this.getPosition().add(0, vehicle.getCameraHeightOffset(), 0));
+            }
         }
     }
 

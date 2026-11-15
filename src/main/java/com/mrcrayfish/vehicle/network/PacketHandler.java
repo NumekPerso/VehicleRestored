@@ -10,7 +10,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 public class PacketHandler
 {
-    public static final String PROTOCOL_VERSION = "1";
+    public static final String PROTOCOL_VERSION = "2";
 
     public static SimpleChannel instance;
     private static int nextId = 0;
@@ -49,6 +49,8 @@ public class PacketHandler
         register(MessageCycleSeats.class, new MessageCycleSeats(), NetworkDirection.PLAY_TO_SERVER);
         register(MessageSyncHeldVehicle.class, new MessageSyncHeldVehicle(), NetworkDirection.PLAY_TO_CLIENT);
         register(MessageSyncPlayerData.class, new MessageSyncPlayerData(), NetworkDirection.PLAY_TO_CLIENT);
+        register(MessageFireTank.class, new MessageFireTank(), NetworkDirection.PLAY_TO_SERVER);
+        register(MessageTankAim.class, new MessageTankAim(), NetworkDirection.PLAY_TO_SERVER);
     }
 
     /**

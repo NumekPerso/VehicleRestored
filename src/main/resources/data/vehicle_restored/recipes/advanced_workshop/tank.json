@@ -1,0 +1,21 @@
+{
+  "type": "vehicle_restored:advanced_workshop",
+  "category": "military",
+  "vehicle": "vehicle_restored:tank",
+  "energy_per_tick": 200,
+  "ingredients": [
+    { "item": "minecraft:iron_block", "count": 10 },
+    { "item": "minecraft:chain", "count": 32 },
+    { "item": "vehicle_restored:diamond_large_engine", "count": 1 },
+    { "item": "vehicle_restored:servo_motor", "count": 2 },
+    { "item": "vehicle_restored:circuit_board", "count": 3 },
+    { "item": "minecraft:spyglass", "count": 1 }
+  ],
+  "phases": [
+    { "name": "structure", "ticks": 800 },
+    { "name": "hull_and_tracks", "ticks": 800 },
+    { "name": "engine", "ticks": 600 },
+    { "name": "turret_and_gun", "ticks": 900 },
+    { "name": "tests_and_crate", "ticks": 500 }
+  ]
+}

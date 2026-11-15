@@ -12,9 +12,13 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 /**
  * Author: MrCrayfish
@@ -94,6 +98,47 @@ public abstract class PlaneEntity extends PoweredVehicleEntity
             this.bodyRotationX *= 0.5F;
             this.bodyRotationZ *= 0.5F;
         }
+    }
+
+    /**
+     * The view of the player goes up and down with the nose of the plane, like it turns with the
+     * plane (same client option, rotateCameraWithVehicle). Without it, the pilot kept looking level
+     * while the plane climbed or dived.
+     */
+    @Override
+    public void updatePassengerPosition(Entity passenger)
+    {
+        super.updatePassengerPosition(passenger);
+        if(this.level().isClientSide() && this.hasPassenger(passenger) && VehicleHelper.canApplyVehicleYaw(passenger))
+        {
+            float pitchChange = this.bodyRotationX - this.prevBodyRotationX;
+            passenger.setXRot(Mth.clamp(passenger.getXRot() - pitchChange, -90F, 90F));
+        }
+    }
+
+    /** Point the body tilts around (see AbstractPlaneRenderer) */
+    public Vec3 getTiltPivot(float partialTicks)
+    {
+        return this.getPosition(partialTicks).add(0, 0.5, 0);
+    }
+
+    /**
+     * Tilts an offset from the tilt pivot like the body is drawn: pitched and rolled around the
+     * plane's own axes. The camera of the crew follows it (CameraMixin): in first person it stayed
+     * at the level eye position while the body pitched, and the nose came in front of the view.
+     */
+    public Vec3 tiltWithBody(Vec3 offset, float partialTicks)
+    {
+        float pitch = Mth.lerp(partialTicks, this.prevBodyRotationX, this.bodyRotationX);
+        float roll = Mth.lerp(partialTicks, this.prevBodyRotationZ, this.bodyRotationZ);
+        if(pitch == 0F && roll == 0F)
+        {
+            return offset;
+        }
+        float yaw = Mth.lerp(partialTicks, this.yRotO, this.getYRot()) * Mth.DEG_TO_RAD;
+        Vector3f vector = new Vector3f((float) offset.x, (float) offset.y, (float) offset.z);
+        new Quaternionf().rotateY(-yaw).rotateX(-pitch * Mth.DEG_TO_RAD).rotateZ(-roll * Mth.DEG_TO_RAD).rotateY(yaw).transform(vector);
+        return new Vec3(vector.x(), vector.y(), vector.z());
     }
 
     @Override

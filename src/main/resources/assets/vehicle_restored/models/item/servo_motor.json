@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "vehicle_restored:item/servo_motor"
+    }
+}

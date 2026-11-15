@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "vehicle_restored:jack_head"
+    "vehicle_restored:jack_head",
+    "vehicle_restored:military_crate"
   ]
 }

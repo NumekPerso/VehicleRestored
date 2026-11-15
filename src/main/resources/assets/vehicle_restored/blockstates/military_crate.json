@@ -1,0 +1,52 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "vehicle_restored:block/military_crate"
+      }
+    },
+    {
+      "when": {
+        "part": "0",
+        "opened": "false",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/military_crate/closed_block"
+      }
+    },
+    {
+      "when": {
+        "part": "0",
+        "opened": "false",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/military_crate/closed_block",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "part": "0",
+        "opened": "false",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/military_crate/closed_block",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "part": "0",
+        "opened": "false",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "vehicle_restored:block/military_crate/closed_block",
+        "y": 270
+      }
+    }
+  ]
+}

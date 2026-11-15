@@ -7,11 +7,14 @@ import com.mrcrayfish.vehicle.VehicleMod;
 import com.mrcrayfish.vehicle.entity.EngineTier;
 import com.mrcrayfish.vehicle.entity.EngineType;
 import com.mrcrayfish.vehicle.entity.WheelType;
+import com.mrcrayfish.vehicle.item.ArmorPlateItem;
+import com.mrcrayfish.vehicle.item.ComponentItem;
 import com.mrcrayfish.vehicle.item.EngineItem;
 import com.mrcrayfish.vehicle.item.HammerItem;
 import com.mrcrayfish.vehicle.item.JerryCanItem;
 import com.mrcrayfish.vehicle.item.KeyItem;
 import com.mrcrayfish.vehicle.item.SprayCanItem;
+import com.mrcrayfish.vehicle.item.TankAmmoItem;
 import com.mrcrayfish.vehicle.item.WheelItem;
 import com.mrcrayfish.vehicle.item.WrenchItem;
 import net.minecraft.world.item.BucketItem;
@@ -57,6 +60,13 @@ public class ModItems
     public static final RegistryObject<BucketItem> FUELIUM_BUCKET = register("fuelium_bucket", () -> new BucketItem(ModFluids.FUELIUM, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1)));
     public static final RegistryObject<BucketItem> ENDER_SAP_BUCKET = register("ender_sap_bucket", () -> new BucketItem(ModFluids.ENDER_SAP, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1)));
     public static final RegistryObject<BucketItem> BLAZE_JUICE_BUCKET = register("blaze_juice_bucket", () -> new BucketItem(ModFluids.BLAZE_JUICE, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1)));
+    /* Tank ammunition (no recipe yet). Full store: 40 shells, 256 light shells, 3200 cartridges */
+    public static final RegistryObject<TankAmmoItem> TANK_SHELL = register("tank_shell", () -> new TankAmmoItem(1, new Item.Properties().stacksTo(10)));
+    public static final RegistryObject<TankAmmoItem> LIGHT_SHELL_PACK = register("light_shell_pack", () -> new TankAmmoItem(4, new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<TankAmmoItem> BULLET_BELT = register("bullet_belt", () -> new TankAmmoItem(100, new Item.Properties().stacksTo(8)));
+    public static final RegistryObject<ArmorPlateItem> ARMOR_PLATE = register("armor_plate", () -> new ArmorPlateItem(new Item.Properties()));
+    public static final RegistryObject<ComponentItem> CIRCUIT_BOARD = register("circuit_board", () -> new ComponentItem(new Item.Properties()));
+    public static final RegistryObject<ComponentItem> SERVO_MOTOR = register("servo_motor", () -> new ComponentItem(new Item.Properties()));
 
     private static <T extends Item> RegistryObject<T> register(String id, Supplier<T> item)
     {

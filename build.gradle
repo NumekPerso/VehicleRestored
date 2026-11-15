@@ -82,6 +82,11 @@ repositories {
     maven {
         url = "https://www.cursemaven.com"
     }
+    // JEI (optional integration: the API to compile, the mod itself in the dev client)
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
     // Put FurnitureRestored-forge-1.20.1-1.0.jar in the libs folder to test the furniture vehicles in the dev client.
     flatDir {
         dirs 'libs'
@@ -91,6 +96,12 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.28'
     implementation fg.deobf('curse.maven:catalogue-459701:4590890')
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    // JEI in the dev client; leave it out with -PnoJei to check that the mod starts without it
+    if(!project.hasProperty('noJei')) {
+        runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+    }
     if(file('libs/FurnitureRestored-forge-1.20.1-1.0.jar').exists()) {
         runtimeOnly fg.deobf('blank:FurnitureRestored-forge:1.20.1-1.0')
     }

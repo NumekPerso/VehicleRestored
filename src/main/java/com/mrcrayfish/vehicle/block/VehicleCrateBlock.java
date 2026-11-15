@@ -55,6 +55,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -84,6 +85,9 @@ public class VehicleCrateBlock extends RotatedObjectBlock implements EntityBlock
     {
         REGISTERED_CRATES.forEach(resourceLocation ->
         {
+            // the military vehicles come in the military crate (MilitaryCrateBlock fills the tab with them)
+            if(MilitaryCrateBlock.carries(resourceLocation))
+                return;
             CompoundTag blockEntityTag = new CompoundTag();
             blockEntityTag.putString("Vehicle", resourceLocation.toString());
             blockEntityTag.putBoolean("Creative", true);
@@ -214,6 +218,13 @@ public class VehicleCrateBlock extends RotatedObjectBlock implements EntityBlock
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter reader, List<Component> list, TooltipFlag advanced)
     {
+        appendCrateText(stack, list, this.getDescriptionId());
+    }
+
+    /** The tooltip of a crate: the vehicle inside, and how to open it with shift held */
+    @OnlyIn(Dist.CLIENT)
+    public static void appendCrateText(ItemStack stack, List<Component> list, String descriptionId)
+    {
         Component vehicleName = EntityType.PIG.getDescription();
         CompoundTag tagCompound = stack.getTag();
         if(tagCompound != null)
@@ -230,7 +241,7 @@ public class VehicleCrateBlock extends RotatedObjectBlock implements EntityBlock
         }
         if(Screen.hasShiftDown())
         {
-            list.addAll(RenderUtil.lines(Component.translatable(this.getDescriptionId() + ".info", vehicleName), 150));
+            list.addAll(RenderUtil.lines(Component.translatable(descriptionId + ".info", vehicleName), 150));
         }
         else
         {
@@ -239,7 +250,13 @@ public class VehicleCrateBlock extends RotatedObjectBlock implements EntityBlock
         }
     }
 
+    /** The crate of a vehicle (the military crate for the military vehicles) */
     public static ItemStack create(ResourceLocation entityId, int color, ItemStack engine, ItemStack wheel)
+    {
+        return createIn(MilitaryCrateBlock.carries(entityId) ? ModBlocks.MILITARY_CRATE.get() : ModBlocks.VEHICLE_CRATE.get(), entityId, color, engine, wheel);
+    }
+
+    public static ItemStack createIn(Block crate, ResourceLocation entityId, int color, ItemStack engine, ItemStack wheel)
     {
         CompoundTag blockEntityTag = new CompoundTag();
         blockEntityTag.putString("Vehicle", entityId.toString());
@@ -248,7 +265,7 @@ public class VehicleCrateBlock extends RotatedObjectBlock implements EntityBlock
         blockEntityTag.put("WheelStack", wheel.save(new CompoundTag()));
         CompoundTag itemTag = new CompoundTag();
         itemTag.put("BlockEntityTag", blockEntityTag);
-        ItemStack stack = new ItemStack(ModBlocks.VEHICLE_CRATE.get());
+        ItemStack stack = new ItemStack(crate);
         stack.setTag(itemTag);
         return stack;
     }

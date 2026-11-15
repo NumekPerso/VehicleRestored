@@ -11,6 +11,8 @@
     "vehicle_restored:industrial_fuel_drum",
     "vehicle_restored:workstation",
     "vehicle_restored:vehicle_crate",
-    "vehicle_restored:jack"
+    "vehicle_restored:jack",
+    "vehicle_restored:advanced_workshop",
+    "vehicle_restored:creative_battery"
   ]
 }

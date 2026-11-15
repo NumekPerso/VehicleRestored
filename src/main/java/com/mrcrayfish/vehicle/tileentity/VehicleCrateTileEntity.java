@@ -28,7 +28,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
@@ -55,7 +57,31 @@ public class VehicleCrateTileEntity extends TileEntitySynced
 
     public VehicleCrateTileEntity(BlockPos pos, BlockState state)
     {
-        super(ModTileEntities.VEHICLE_CRATE.get(), pos, state);
+        this(ModTileEntities.VEHICLE_CRATE.get(), pos, state);
+    }
+
+    /** For the other crates (the military crate): same contents and opening, their own block and look */
+    protected VehicleCrateTileEntity(BlockEntityType<?> type, BlockPos pos, BlockState state)
+    {
+        super(type, pos, state);
+    }
+
+    /** Where the vehicle is put when the crate is gone (on the ground, in the middle of the crate) */
+    protected Vec3 getVehiclePosition()
+    {
+        return new Vec3(this.worldPosition.getX() + 0.5, this.worldPosition.getY(), this.worldPosition.getZ() + 0.5);
+    }
+
+    /** The direction the vehicle faces when it comes out */
+    protected float getVehicleYaw()
+    {
+        return this.getBlockState().getValue(VehicleCrateBlock.DIRECTION).get2DDataValue() * 90F + 180F;
+    }
+
+    /** Middle of the crate, where the burst at the end of the opening goes off */
+    protected Vec3 getCentre()
+    {
+        return Vec3.atCenterOf(this.worldPosition);
     }
 
     public void setEntityId(ResourceLocation entityId)
@@ -151,13 +177,12 @@ public class VehicleCrateTileEntity extends TileEntitySynced
                 if(this.timer == 150)
                 {
                     VehicleHelper.playSound(SoundEvents.GENERIC_EXPLODE, this.worldPosition, 1.0F, 1.0F);
-                    this.level.addParticle(ParticleTypes.EXPLOSION_EMITTER, false, this.worldPosition.getX() + 0.5, this.worldPosition.getY() + 0.5, this.worldPosition.getZ() + 0.5, 0, 0, 0);
+                    Vec3 centre = this.getCentre();
+                    this.level.addParticle(ParticleTypes.EXPLOSION_EMITTER, false, centre.x, centre.y, centre.z, 0, 0, 0);
                 }
             }
             if(!this.level.isClientSide && this.timer > 250)
             {
-                BlockState state = this.level.getBlockState(this.worldPosition);
-                Direction facing = state.getValue(VehicleCrateBlock.DIRECTION);
                 EntityType<?> entityType = ForgeRegistries.ENTITY_TYPES.getValue(this.entityId);
                 if(entityType != null)
                 {
@@ -181,8 +206,10 @@ public class VehicleCrateTileEntity extends TileEntitySynced
                                 poweredVehicle.setWheelStack(this.wheelStack);
                             }
                         }
-                        entity.absMoveTo(this.worldPosition.getX() + 0.5, this.worldPosition.getY(), this.worldPosition.getZ() + 0.5, facing.get2DDataValue() * 90F + 180F, 0F);
-                        entity.setYHeadRot(facing.get2DDataValue() * 90F + 180F);
+                        Vec3 position = this.getVehiclePosition();
+                        float yaw = this.getVehicleYaw();
+                        entity.absMoveTo(position.x, position.y, position.z, yaw, 0F);
+                        entity.setYHeadRot(yaw);
                         this.level.addFreshEntity(entity);
                     }
                     this.level.setBlockAndUpdate(this.worldPosition, Blocks.AIR.defaultBlockState());

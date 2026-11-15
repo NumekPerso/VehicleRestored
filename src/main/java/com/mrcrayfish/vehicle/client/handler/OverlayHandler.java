@@ -2,6 +2,7 @@ package com.mrcrayfish.vehicle.client.handler;
 
 import com.mrcrayfish.vehicle.Config;
 import com.mrcrayfish.vehicle.entity.PoweredVehicleEntity;
+import com.mrcrayfish.vehicle.entity.vehicle.TankEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -43,7 +44,8 @@ public class OverlayHandler
             return;
 
         Entity entity = player.getVehicle();
-        if(!(entity instanceof PoweredVehicleEntity))
+        // the tank shows its own state (TankHandler)
+        if(!(entity instanceof PoweredVehicleEntity) || entity instanceof TankEntity)
             return;
 
         PoweredVehicleEntity vehicle = (PoweredVehicleEntity) entity;
